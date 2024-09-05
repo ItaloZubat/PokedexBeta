@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/769px-Pokebola-pokeball-png-0.png" type="image/x-icon">
+    <link rel="manifest" href="manifest.json"> <!-- Manifesto do PWA -->
+
+    <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js')
+              .then((registration) => {
+                console.log('Service Worker registrado com sucesso:', registration);
+              })
+              .catch((error) => {
+                console.error('Falha ao registrar o Service Worker:', error);
+              });
+          });
+        }
+      </script>
+      
+</head>
+
+<body>
+    <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/404px-International_Pok%C3%A9mon_logo.svg.png" alt="" id="logo">
+    </div>
+    <div class="procurar">
+        <input type="text" id="pokemonNome" placeholder="Nome do Pokémon">
+        <input type="button" value="Buscar" id="buscar" onclick="buscarPokemon()">
+    </div>
+    <div class="resultado">
+        <div class="card">
+            <img src="" alt="" id="pokemonImg">
+            <h2 id="pokemonId"></h2>
+            <h2 id="nomePokemon"></h2>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/service-worker.js")
+                .then(registration => {
+                    console.log("Service Worker registrado com sucesso:", registration);
+                })
+                .catch(error => {
+                    console.log("Falha ao registrar o Service Worker:", error);
+                });
+        }
+    </script>
+</body>
+
+</html>
